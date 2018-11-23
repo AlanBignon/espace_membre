@@ -11,16 +11,14 @@ if(isset($_GET["connected"])){
 
 if(!empty($tableaucsv)) {
     $i = 0;
-    foreach ($tableaucsv[$i] as $data){
-        foreach ($data[$i] as $donnes) {
-            for ($p = 0; $p < COUNT($data); $p ++ ){
-                if ($donnes[$p] == $_POST["email"] && $donnes[$p+1] == $_POST["password"]){
-                    $_SESSION["log"] = true;
-                } elseif ($donnes[$p] != $_POST["email"]) {
-                    echo "Email non enregistré";
-                }elseif ($donnes[$p+1] != $_POST["password"]) {
-                    echo "mauvais mot de passe";
-                }
+    foreach ($tableaucsv[$i] as $donnes){
+        for ($p = 0; $p < COUNT($donnes); $p ++ ){
+            if ($donnes[$p] == $_POST["email"] && $donnes[$p+1] == $_POST["password"]){
+                $_SESSION["log"] = true;
+            } elseif ($donnes[$p] != $_POST["email"]) {
+                echo "Email non enregistré";
+            }elseif ($donnes[$p+1] != $_POST["password"]) {
+                echo "mauvais mot de passe";
             }
         }
     }
@@ -39,7 +37,7 @@ if(!empty($tableaucsv)) {
     </header>
     <main>
     <?php $nomfichier = "data/donnes.csv" ?>
-    <?php var_dump(recupcsv($nomfichier));?>
+
     <?php $tableaucsv = recupcsv($nomfichier);?>
     <?php var_dump($tableaucsv);?>
         <p>

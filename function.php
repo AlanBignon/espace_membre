@@ -9,7 +9,7 @@ function recupcsv ($nomfichier) {
     $recupfichier = fopen($nomfichier, "r");
     if($recupfichier) {
         while (!feof($recupfichier)) {
-            $valeur = fgetcsv($recupfichier, 0 , ';' , '"' );
+            $valeur = fgetcsv($recupfichier, 0 , ',' , '"' );
             $array [] = $valeur;
         }
         fclose($recupfichier);
