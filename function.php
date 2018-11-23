@@ -1,7 +1,12 @@
 <?php
 
+function redirectionDashboard () {
+    header('location: http://localhost/espace_membre/dashboard.php');
+    die;
+}
+
 function redirection () {
-    header('Location: http://localhost/espace_menbre_login.php');
+    header('Location: http://localhost/espace_membre/login.php');
     die;
 }
 function recupcsv ($nomfichier) {

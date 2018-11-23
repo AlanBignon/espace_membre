@@ -2,27 +2,12 @@
 require 'function.php';
 session_start();
 
-if(isset($_GET["connected"])){
-    $_connected = $_GET["connected"];
-        if ($_connected == 1) {
-            redirection();
-    }
+if ($_SESSION["log"] == false) {
+    var_dump($_SESSION["log"]);
+    redirection();
 }
+var_dump($_SESSION["log"]);
 
-if(!empty($tableaucsv)) {
-    $i = 0;
-    foreach ($tableaucsv[$i] as $donnes){
-        for ($p = 0; $p < COUNT($donnes); $p ++ ){
-            if ($donnes[$p] == $_POST["email"] && $donnes[$p+1] == $_POST["password"]){
-                $_SESSION["log"] = true;
-            } elseif ($donnes[$p] != $_POST["email"]) {
-                echo "Email non enregistré";
-            }elseif ($donnes[$p+1] != $_POST["password"]) {
-                echo "mauvais mot de passe";
-            }
-        }
-    }
-}
 
 
 
@@ -33,13 +18,12 @@ if(!empty($tableaucsv)) {
 </head>
 <body>
     <header>
-        <h1>Coucou tu est connecté</h1>
+        <h1>Coucou tu es connecté</h1>
     </header>
     <main>
     <?php $nomfichier = "data/donnes.csv" ?>
 
     <?php $tableaucsv = recupcsv($nomfichier);?>
-    <?php var_dump($tableaucsv);?>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies eros et mauris ultricies, id dignissim odio semper. Donec quis enim nulla. Duis iaculis congue nunc non molestie. Suspendisse fringilla lacinia erat vitae gravida. In rutrum nibh sed sodales consequat. Nullam interdum egestas mi quis porttitor. Nullam sit amet arcu et dui malesuada luctus sed id nisl. Morbi eu odio eu erat lobortis placerat.
 
@@ -52,7 +36,7 @@ if(!empty($tableaucsv)) {
             Maecenas hendrerit arcu enim, et dignissim augue rutrum sit amet. Quisque cursus arcu in tincidunt consequat. Ut dignissim molestie erat non posuere. Aenean non lacinia diam, in interdum elit. Praesent ac sollicitudin orci. Donec aliquam nisi felis, ac molestie tellus interdum non. Proin aliquam, orci ut dapibus mollis, libero ex pharetra neque, ac posuere odio nisl nec risus.
         </p>
 
-        <button class="log_out"><a href="login.php"></a> Log out</button>
+        <a href="http://localhost/espace_membre/login.php"><button class="log_out">Log out</button></a>
     </main>
 </body>
 </html>
