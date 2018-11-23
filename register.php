@@ -4,6 +4,19 @@ require ('function.php');
 
 $_SESSION["log"] = false;
 
+$_SESSION["libre"] = true;
+
+if(!empty($tableaucsv)) {
+    $i = 0;
+    foreach ($tableaucsv as $donnes => $key){
+        $i++;
+        $p=0;
+        if ($_POST["email"] == $tableaucsv[$donnes][$p]){
+            $_SESSION["libre"] = false;
+        }
+    }
+}
+
 if(isset($_POST['email']) && !empty($_POST['password'])){
     if ($_POST['password'] == $_POST['confpassword']){
         $_SESSION['log'] = true;

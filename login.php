@@ -12,16 +12,17 @@ $tableaucsv = recupcsv($nomfichier);
         foreach ($tableaucsv[$i] as $donnes){
             $p=0;
             $i ++;
-
-            if (isset($_POST["email"]) && $tableaucsv[$i-1][$p] == $_POST["email"] && isset($_POST["password"]) && $tableaucsv[$i-1][$p+1] == $_POST["password"]){
-                $_SESSION["log"] = true;
-                redirectionDashboard();
-            } elseif (isset($_POST["email"]) && $tableaucsv[$i-1][$p] != $_POST["email"]) {
-                echo "Email non enregistré";
-                break;
-            }elseif (isset($_POST["password"]) && $tableaucsv[$i-1][$p+1] != $_POST["password"]) {
-                echo "mauvais mot de passe";
-                break;
+            if ($_SESSION["libre"] = true) {
+                if (isset($_POST["email"]) && $tableaucsv[$i-1][$p] == $_POST["email"] && isset($_POST["password"]) && $tableaucsv[$i-1][$p+1] == $_POST["password"]){
+                    $_SESSION["log"] = true;
+                    redirectionDashboard();
+                } elseif (isset($_POST["email"]) && $tableaucsv[$i-1][$p] != $_POST["email"]) {
+                    echo "Email non enregistré";
+                    break;
+                }elseif (isset($_POST["password"]) && $tableaucsv[$i-1][$p+1] != $_POST["password"]) {
+                    echo "mauvais mot de passe";
+                    break;
+                }
             }
         }
     }
