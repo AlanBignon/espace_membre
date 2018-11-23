@@ -9,26 +9,22 @@ if(isset($_GET["connected"])){
     }
 }
 
-
-
-$row = 1;
-if (($handle = fopen("data/donnes.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 0, ";")) !== FALSE) {
-        $num = count($data);
-        echo "<p> $num champs à la ligne $row: <br /></p>\n";
-        $row++;
-        for ($c=0; $c < $num; $c++) {
-            echo $data[$c] . "<br />\n";
+if(!empty($tableaucsv)) {
+    $i = 0;
+    foreach ($tableaucsv[$i] as $data){
+        foreach ($data[$i] as $donnes) {
+            for ($p = 0; $p < COUNT($data); $p ++ ){
+                if ($donnes[$p] == $_POST["email"] && $donnes[$p+1] == $_POST["password"]){
+                    $_SESSION["log"] = true;
+                } elseif ($donnes[$p] != $_POST["email"]) {
+                    echo "Email non enregistré";
+                }elseif ($donnes[$p+1] != $_POST["password"]) {
+                    echo "mauvais mot de passe";
+                }
+            }
         }
     }
-    fclose($handle);
 }
-?>
-
-
-
-
-
 
 
 
@@ -42,10 +38,10 @@ if (($handle = fopen("data/donnes.csv", "r")) !== FALSE) {
         <h1>Coucou tu est connecté</h1>
     </header>
     <main>
-        //<?php
-        //        $nomfichier = "data/donnes.txt";
-        //        echo recupcsv($nomfichier);
-        //        ?>
+    <?php $nomfichier = "data/donnes.csv" ?>
+    <?php var_dump(recupcsv($nomfichier));?>
+    <?php $tableaucsv = recupcsv($nomfichier);?>
+    <?php var_dump($tableaucsv);?>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies eros et mauris ultricies, id dignissim odio semper. Donec quis enim nulla. Duis iaculis congue nunc non molestie. Suspendisse fringilla lacinia erat vitae gravida. In rutrum nibh sed sodales consequat. Nullam interdum egestas mi quis porttitor. Nullam sit amet arcu et dui malesuada luctus sed id nisl. Morbi eu odio eu erat lobortis placerat.
 
