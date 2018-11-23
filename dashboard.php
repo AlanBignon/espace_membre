@@ -6,7 +6,6 @@ if ($_SESSION["log"] == false) {
     var_dump($_SESSION["log"]);
     redirection();
 }
-var_dump($_SESSION["log"]);
 
 
 
