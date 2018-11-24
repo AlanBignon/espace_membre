@@ -6,10 +6,6 @@ if ($_SESSION["log"] == false) {
     var_dump($_SESSION["log"]);
     redirection();
 }
-
-
-
-
 ?><!DOCTYPE html>
 <html>
 <head>
